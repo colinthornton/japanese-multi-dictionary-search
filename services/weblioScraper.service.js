@@ -1,6 +1,6 @@
 const cheerio = require('cheerio');
 
-const scrapeWeblioDefinition = html => {
+const scrapeWeblioDefinition = (html) => {
   const $ = cheerio.load(html);
   const definitions = [];
 
