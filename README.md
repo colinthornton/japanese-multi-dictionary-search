@@ -11,7 +11,7 @@ I often find myself looking at the same handful of sites when looking up a Japan
 ## Routes
 
 - `GET /`
-  - Hosts the (client)[https://github.com/colinthornton/japanese-multi-dictionary-search-client]. (WIP)
+  - (WIP) Hosts the [client](https://github.com/colinthornton/japanese-multi-dictionary-search-client).
 
 - `GET /api/search?query`
 
