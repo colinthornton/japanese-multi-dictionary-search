@@ -2,21 +2,23 @@ const cheerio = require('cheerio');
 
 const scrapeWeblioDefinition = (html) => {
   const $ = cheerio.load(html);
-  const definitions = [];
+  const content = [];
 
   $('.NetDicHead').each((i, el) => {
-    definitions.push({
+    content.push({
       word: $(el).text(),
     });
   });
 
   $('.NetDicBody').each((i, el) => {
-    definitions[i].content = $(el)
+    content[i].definitions = $(el)
       .text()
-      .replace(/(\s\s+)|(\u3000\s+)|(\s\u3000+)|(\u3000\u3000+)/, '\n');
+      .split(/[\u2460-\u2473]/)
+      .map(line => line.replace(/(\s\s+)|(\u3000\s+)|(\s\u3000+)|(\u3000\u3000+)/g, ' ').trim())
+      .filter(line => line.length > 0);
   });
 
-  return definitions;
+  return content;
 };
 
 module.exports = scrapeWeblioDefinition;
