@@ -13,11 +13,12 @@ I often find myself looking at the same handful of sites when looking up a Japan
 - `GET /`
   - (WIP) Hosts the [client](https://github.com/colinthornton/japanese-multi-dictionary-search-client).
 
-- `GET /api/search?query`
-
-  - Example results for `/api/search?query=検索`:
+- `GET /api/search`
+  - Parameters: query
 
 ```
+Ex) /api/search?query=検索
+
 "query": "検索",
 "results": [
   {
