@@ -2,10 +2,11 @@ const express = require('express');
 const request = require('request-promise');
 
 const sites = require('../models/sites.model');
+const asyncMiddleware = require('../middleware/async.middleware');
 
 const router = express.Router();
 
-router.get('/', async (req, res) => {
+router.get('/', asyncMiddleware(async (req, res) => {
   const response = await {
     query: req.query.query,
     results: await Promise.all(sites.map(async site => ({
@@ -30,7 +31,7 @@ router.get('/', async (req, res) => {
     }))),
   };
 
-  res.json(response);
-});
+  return res.json(response);
+}));
 
 module.exports = router;
