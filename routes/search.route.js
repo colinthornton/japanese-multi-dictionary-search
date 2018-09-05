@@ -17,10 +17,16 @@ router.get('/', async (req, res) => {
           json: true,
         })
           .then(data => site.scraper(data.data))
-          .catch(error => console.error(error))
+          .catch((error) => {
+            console.error(error);
+            return [];
+          })
         : await request(encodeURI(`${site.url}${req.query.query}`))
           .then(html => site.scraper(html))
-          .catch(error => console.error(error)),
+          .catch((error) => {
+            console.error(error);
+            return [];
+          }),
     }))),
   };
 
